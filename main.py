@@ -2,15 +2,18 @@
 
 
 from Services import SoundRecorder
-
+from Services import AdClassifier
 
 def main(): 
 
+	classifier = AdClassifier.AdClassifier()
 	recorder = SoundRecorder.SoundRecorder()
 
 	myrecording = recorder.recordOneBuffer()
 
-	print(myrecording)
+	classification = classifier.classifyFromBuffer(myrecording)
+
+	print(classification)
 
 	return 0
 

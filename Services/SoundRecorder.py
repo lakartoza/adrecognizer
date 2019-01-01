@@ -5,7 +5,7 @@ class SoundRecorder:
 	"""docstring for SoundRecorder"""
 	def __init__(self):
 		super(SoundRecorder, self).__init__()
-		self.bufferDuration = 2.0 # seconds
+		self.bufferDuration = 10.0 # seconds
 		self.samplerate = 44100
 		self.channels = 2
 		

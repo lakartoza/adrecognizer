@@ -12,7 +12,7 @@ class TestSoundRecorder(unittest.TestCase):
         sd.default.samplerate = fs = 44100
         sd.default.channels = 2
 
-        myrecording = sd.rec(int(duration * fs))
+        myrecording = sd.rec(int(duration * fs), blocking=True)
         zeros = np.zeros((int(duration*fs), 2))
 
         print(zeros.tolist() == myrecording.tolist())
@@ -23,11 +23,23 @@ class TestSoundRecorder(unittest.TestCase):
         self.assertNotEqual(myrecording.tolist()[10:30], zeros.tolist()[10:30])
 
 
+    def test_playBackRecording(self):
+        duration = 4  # seconds
+        sd.default.samplerate = fs = 44100
+        sd.default.channels = 2
+
+        myrecording = sd.rec(int(duration * fs), blocking=True)
+
+        sd.play(myrecording);
+        sd.wait();
+
+
+        self.assertEqual(1,1)
+
+
+
 
     # def test_recorderRunsInBackground(self):
-
-
-
 
 
 
